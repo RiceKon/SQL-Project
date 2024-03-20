@@ -861,7 +861,6 @@ BPlusTree<T>* BPlusTree<T>::merge_with_next_subset(int i){
     merge(subset[i]->data, subset[i]->data_count, subset[i + 1]->data, subset[i + 1]->data_count);
     merge(subset[i]->subset, subset[i]->child_count, subset[i + 1]->subset, subset[i + 1]->child_count);
 
-
     delete_item(subset, i + 1, child_count, deleteTree);
     delete deleteTree;
     if(subset[i]->is_leaf()){

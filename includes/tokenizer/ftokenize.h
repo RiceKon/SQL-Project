@@ -16,7 +16,6 @@ public:
     int block_pos();     //returns the value of _blockPos
     
     friend FTokenizer& operator >> (FTokenizer& f, SToken& t){
-        
         t = f.next_token();
         return f;
     }

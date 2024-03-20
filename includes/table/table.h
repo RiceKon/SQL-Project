@@ -279,8 +279,8 @@ public:
     SY(const string& infix = ""){
         /*
         docstring
-        this fucntion takes a string and converts it into a vector of strings
-        then it converts the vector of strings into a queue of tokens
+        this fucntion takes a string and converts it into a vector of string
+        then it converts the vector of string into a queue of tokens
         */
     _infix = infix;
     //string to vector
