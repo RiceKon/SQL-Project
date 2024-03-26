@@ -205,7 +205,7 @@ Table Table::select(const vectorstr& columns, const vectorstr& tokens){
     Then we will pass it into the select that has 2 params that takes token pointers and eval
     */
     SY sy(tokens);
-    cout << sy.get_postfix() << endl;
+    // cout << sy.get_postfix() << endl;
     return select(columns, sy.get_postfix());
 }
 

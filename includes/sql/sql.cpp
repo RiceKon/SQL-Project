@@ -29,11 +29,6 @@ void SQL::run_batch(){
 
     if(getline(BATCH_FILE, com) && com == "@echo off"){ 
         print = false;
-    }else{
-        t = command(com);
-        if(valid && print){
-            cout << t << endl;
-        }
     }
 
     while(getline(BATCH_FILE, com)){
@@ -57,6 +52,7 @@ Table SQL::command(const string& command){
     strcpy(s, command.c_str());
     Parser parser(s);
     mmap_ss ptree = parser.parse_tree();
+    
     // do not go futher parse tree is empty
     if(ptree.empty()){
         valid = false;
@@ -122,6 +118,14 @@ Table SQL::excute_command(const string& command){
             return Table();
         }
         Table t(_tname, _fields);
+        if(BATCH_FILE.fail()){
+            string Y_N;
+            BATCH_FILE.open(_tname + "_batch", ios::out | ios::app);
+            cout << "@echo on or off: " << endl;
+            cin >> Y_N;
+            BATCH_FILE << "@echo " + Y_N << endl;
+            BATCH_FILE.close();
+        }
         return t;
     }else if(command == "select"){
         if(check){
